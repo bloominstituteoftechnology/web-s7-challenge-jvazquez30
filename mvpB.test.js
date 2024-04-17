@@ -29,9 +29,49 @@ describe('Sprint 7 Challenge Learner Tests', () => {
     [5] renders a text that reads "JavaScript is pretty awesome"
     [6] renders a text that includes "javaScript is pretty" (use exact = false)
   */
-  test('you can comment out this test', () => {
-    expect(true).toBe(false)
+  // test('you can comment out this test', () => {
+  //   expect(true).toBe(false)
+  // })
+  test('sum()', () => {
+    expect(() => { sum() }).toThrowError("pass valid numbers")
   })
+  test("sum(2, 'seven')", () => {
+    expect(() => { sum(2, "seven") }).toThrowError('pass valid numbers')
+  })
+  test('sum(1, 3)', () => {
+    expect(sum(1, 3)).toBe(4)
+  })
+  test('sum("1", 2)', () => {
+    expect(sum("1", 2)).toBe(3)
+  })
+  test('sum("10", "3")', () => {
+    expect(sum("10", "3")).toBe(13)
+  })
+})
+
+test("renders a link that reads Home", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText("Home")).toBeInTheDocument()
+})
+test("renders a link that reads About", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText("About")).toBeInTheDocument()
+})
+test("renders a link that reads Blog", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText("Blog")).toBeInTheDocument()
+})
+test("renders a link that reads The Truth", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText("The Truth")).toBeInTheDocument()
+})
+test("renders a link that reads JavaScript is pretty awesome", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText("JavaScript is pretty awesome")).toBeInTheDocument()
+})
+test("renders a link that includes JavaScript is pretty (use exact = false)", () => {
+  render(<HelloWorld />)
+  expect(screen.queryByText(/JavaScript is pretty/i)).toBeInTheDocument()
 })
 
 function sum(a, b) {
